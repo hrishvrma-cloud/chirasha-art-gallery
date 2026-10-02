@@ -81,16 +81,27 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', studio: 'Art Classes Platform API', time: new Date().toISOString() });
 });
 
-// Serve frontend build if dist folder exists
+// Serve frontend build
 const clientDistPath = path.join(__dirname, '..', 'client', 'dist');
+console.log('Static frontend directory:', clientDistPath, '| Exists:', fs.existsSync(clientDistPath));
+
 if (fs.existsSync(clientDistPath)) {
   app.use(express.static(clientDistPath));
-  // In Express 5, use app.use fallback for SPA routing
-  app.use((req, res, next) => {
-    if (req.method === 'GET' && !req.path.startsWith('/api') && !req.path.startsWith('/uploads')) {
-      return res.sendFile(path.join(clientDistPath, 'index.html'));
+  // Handle SPA routing in Express 5
+  app.get('{*path}', (req, res, next) => {
+    if (req.path.startsWith('/api') || req.path.startsWith('/uploads')) {
+      return next();
     }
-    next();
+    res.sendFile(path.join(clientDistPath, 'index.html'));
+  });
+} else {
+  app.get('/', (req, res) => {
+    res.send(`
+      <div style="font-family: sans-serif; text-align: center; padding: 50px;">
+        <h2>🎨 Chirasha Art Gallery Backend is Live!</h2>
+        <p>Building frontend assets... Please refresh in a moment.</p>
+      </div>
+    `);
   });
 }
 

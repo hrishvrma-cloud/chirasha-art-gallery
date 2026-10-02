@@ -3,7 +3,7 @@ services:
     name: chirasha-art-gallery
     runtime: node
     plan: free
-    buildCommand: npm install && npm run build --prefix client
+    buildCommand: npm run build
     startCommand: node server/server.js
     envVars:
       - key: PORT
