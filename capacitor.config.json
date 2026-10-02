@@ -1,0 +1,9 @@
+{
+  "appId": "com.chirasha.artgallery",
+  "appName": "Chirasha Art Gallery",
+  "webDir": "client/dist",
+  "bundledWebRuntime": false,
+  "server": {
+    "androidScheme": "https"
+  }
+}

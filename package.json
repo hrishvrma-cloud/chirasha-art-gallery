@@ -1,0 +1,36 @@
+{
+  "name": "art-classes",
+  "version": "1.0.0",
+  "description": "End-to-End Art Studio Management, Attendance, Fees & Promotion Platform",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "server": "node --watch server/server.js",
+    "client": "npm run dev --prefix client",
+    "dev": "concurrently -n \"SERVER,CLIENT\" -c \"magenta,cyan\" \"node --watch server/server.js\" \"npm run dev --prefix client\""
+  },
+  "keywords": [
+    "art-classes",
+    "studio-management",
+    "attendance",
+    "fees",
+    "ai-curriculum"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@capacitor/cli": "^8.5.2",
+    "@capacitor/core": "^8.5.2",
+    "bcryptjs": "^3.0.3",
+    "better-sqlite3": "^13.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.5",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "multer": "^2.4.0",
+    "uuid": "^14.0.2"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.5"
+  }
+}

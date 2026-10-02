@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+client/node_modules/
+
+# Production builds
+client/dist/
+
+# Environment and secrets
+.env
+.env.local
+
+# Database files (optional: keep in git if you want demo data or ignore)
+# server/data/
+
+# OS and Editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
